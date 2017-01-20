@@ -6,7 +6,8 @@ import { Food } from './food.model';
   template: `
   <h1>Follow Your Food</h1>
   <food-list [childFoodList]="masterFoodList"></food-list>
-  <new-food (newFoodSender)="newFood($event)"></new-food>
+  <div class="container"><button class="button" (click)="showNewFoodForm()">Add a New Meal</button></div>
+  <new-food *ngIf="newFoodBool" (newFoodSender)="newFood($event)" (formShowSender)="hideNewFoodForm($event)"></new-food>
   `
 })
 
@@ -23,4 +24,15 @@ export class AppComponent{
   {
     this.masterFoodList.push(newFoodFromChild);
   }
+  newFoodBool: boolean = false;
+  showNewFoodForm()
+  {
+    this.newFoodBool = true;
+    console.log(this.newFoodBool);
+  }
+  hideNewFoodForm(foodFormBool:boolean)
+  {
+    this.newFoodBool = foodFormBool;
+  }
+
 }
