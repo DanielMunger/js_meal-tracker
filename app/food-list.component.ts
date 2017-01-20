@@ -31,7 +31,6 @@ import { Food } from './food.model';
             <div class="col-md-6">
               <p>You Had {{food.item}}, for {{food.meal}}. It Contained {{food.calories}} calories.</p>
             </div>
-
             <div class="col-md-6">
               <p>"{{food.comments}}"</p>
             </div>
