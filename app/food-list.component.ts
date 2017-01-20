@@ -9,8 +9,9 @@ import { Food } from './food.model';
       <div class="col-md-6">
         <h5>You Had {{food.item}}, for {{food.meal}}. It Contained {{food.calories}} calories.</h5>
       </div>
+      <div class="col-md-3"><button (click)="editFood(food)">Edit</button></div>
     </div>
-  </div>  
+  </div>
   `
 
 })
@@ -19,4 +20,10 @@ import { Food } from './food.model';
 export class FoodListComponent
 {
   @Input() childFoodList: Food[];
+  @Output() editFoodSender = new EventEmitter();
+
+  editFood(foodToEdit: Food)
+  {
+    this.editFoodSender.emit(foodToEdit);
+  }
 }

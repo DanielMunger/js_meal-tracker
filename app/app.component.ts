@@ -5,7 +5,8 @@ import { Food } from './food.model';
   selector: 'app-root',
   template: `
   <h1>Follow Your Food</h1>
-  <food-list [childFoodList]="masterFoodList"></food-list>
+  <food-list [childFoodList]="masterFoodList" (editFoodSender)="editFood($event)"></food-list>
+  <edit-food [childSelectedFood]="selectedFood" (doneEditingSender)="editDone()"></edit-food>
   <div class="container"><button class="button" (click)="showNewFoodForm()">Add a New Meal</button></div>
   <new-food *ngIf="newFoodBool" (newFoodSender)="newFood($event)" (formShowSender)="hideNewFoodForm($event)"></new-food>
   `
@@ -33,6 +34,16 @@ export class AppComponent{
   hideNewFoodForm(foodFormBool:boolean)
   {
     this.newFoodBool = foodFormBool;
+  }
+  selectedFood = null;
+  editFood(clickedFood)
+  {
+    this.selectedFood = clickedFood;
+    console.log("hello");
+  }
+  editDone()
+  {
+    this.selectedFood = null;
   }
 
 }
