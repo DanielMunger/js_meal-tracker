@@ -1,0 +1,15 @@
+.nav-wrapper {
+  background-color: #43a047;
+}
+body {
+  background-color: #e0e0e0;
+}
+.dropdown {
+  display: block;
+  width: 40%;
+  margin: 10px;
+}
+.button {
+  margin: 10px;
+  border-radius: 5px;
+}
