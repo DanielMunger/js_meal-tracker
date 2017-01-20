@@ -5,7 +5,21 @@ import { Food } from './food.model';
   selector: 'food-list',
   template: `
   <div class="container">
-    <div class="row" *ngFor="let food of childFoodList">
+    <select class="dropDown" (change)="onChange($event.target.value)">
+      <option value="All" selected="selected">All Meals</option>
+      <option value="Breakfast">Breakfast</option>
+      <option value="Lunch">Lunch</option>
+      <option value="Dinner">Dinner</option>
+      <option value="Snack">Snack</option>
+      <option value="Dessert">Dessert</option>
+    </select>
+    <select class="dropDown" (change)="onChange($event.target.value)">
+      <option value="All" selected="selected">All Calorie Levels</option>
+      <option value="Low">Low Calorie Meals</option>
+      <option value="Average">Average Calorie Meals</option>
+      <option value="High">High Calorie Meals</option>
+    </select>
+    <div class="row" *ngFor="let food of childFoodList | mealtype:filter">
       <div class="col-md-6">
         <h5>You Had {{food.item}}, for {{food.meal}}. It Contained {{food.calories}} calories.</h5>
       </div>
@@ -25,5 +39,10 @@ export class FoodListComponent
   editFood(foodToEdit: Food)
   {
     this.editFoodSender.emit(foodToEdit);
+  }
+  filter= "All";
+  onChange(optionFromMenu)
+  {
+    this.filter = optionFromMenu
   }
 }

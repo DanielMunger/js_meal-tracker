@@ -5,10 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { FoodListComponent } from './food-list.component';
 import { NewFoodComponent } from './new-food.component';
 import { EditFoodComponent } from './edit-food.component';
+import { MealFilterPipe } from './mealfilter.pipe';
 
 @NgModule({
   imports: [ BrowserModule, FormsModule ],
-  declarations: [ AppComponent, FoodListComponent, NewFoodComponent, EditFoodComponent ],
+  declarations: [ AppComponent, FoodListComponent, NewFoodComponent, EditFoodComponent, MealFilterPipe ],
   bootstrap:    [ AppComponent ]
 })
 
