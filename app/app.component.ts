@@ -5,7 +5,8 @@ import { Food } from './food.model';
   selector: 'app-root',
   template: `
   <h1>Follow Your Food</h1>
-  <food-list></food-list>
+  <food-list [childFoodList]="masterFoodList"></food-list>
+  <new-food (newFoodSender)="newFood($event)"></new-food>
   `
 })
 
@@ -17,4 +18,9 @@ export class AppComponent{
     new Food("Mushroom and Bean Hash", "Lunch", 350, "Bit gassy..."),
     new Food("Cliff Bar", "Snack", 250, "Saved the Afternoon")
   ];
+
+  newFood(newFoodFromChild: Food)
+  {
+    this.masterFoodList.push(newFoodFromChild);
+  }
 }
